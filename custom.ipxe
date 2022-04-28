@@ -13,7 +13,7 @@ goto ${custom_choice}
 goto custom_exit
 
 :esxi_65u3_install
-kernel https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/mboot.c32 -c https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/boot.cfg
+kernel https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/mboot.efi -c https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/boot.cfg
 boot || goto custom_exit
 
 
