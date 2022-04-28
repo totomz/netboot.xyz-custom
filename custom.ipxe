@@ -1,12 +1,22 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu ESXi
+item --gap Boot ESXi Installer
+item esxi_65u3_install ${space} 6.5 u3 Installer
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:esxi_65u3_install
+kernel https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/mboot.c32 -c https://ipxe-boot-homelab.s3.eu-west-1.amazonaws.com/iboot/esxi_6.5u3/boot.cfg
+boot || goto custom_exit
+
+
 :custom_exit
-exit 0
+echo Boot failed. Returning to menu
+clear menu
